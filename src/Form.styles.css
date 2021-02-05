@@ -1,0 +1,23 @@
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-control {
+  padding: 5px;
+  margin: 1rem;
+  border-radius: 2px;
+  border: 2px solid rgb(159, 206, 206);
+  width: 200px;
+  transition: ease-in-out, border 0.35s ease-in-out;
+}
+
+input[type="text"] {
+  -webkit-transition: border 0.35s ease-in-out;
+  transition: border 0.3s ease-in-out;
+}
+input[type="text"]:focus {
+  border: 3px solid rgb(159, 206, 206);
+  outline: none;
+}
