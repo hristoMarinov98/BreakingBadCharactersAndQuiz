@@ -10,6 +10,7 @@ function App() {
   const [query, setQuery] = useState("");
   useEffect(() => {
     getCharacters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   const getCharacters = async () => {
@@ -22,32 +23,34 @@ function App() {
 
   return (
     <Router>
-      <div className="nav-container">
-        <Navbar />
-      </div>
-      <Route exact path="/">
-        <div>
-          <div className="header">
-            <h1>Breaking Bad Characters Information</h1>
-          </div>
-          <Form getQuery={(query) => setQuery(query)} />
-          <div className="card-container">
-            {characters.map((character) => (
-              <CharacterCard
-                key={character.char_id}
-                name={character.name}
-                nickname={character.nickname}
-                occupation={character.occupation[0]}
-                image={character.img}
-              />
-            ))}
-            ;
-          </div>
+      <Switch>
+        <div className="nav-container">
+          <Navbar />
         </div>
-      </Route>
-      <Route path="/quiz">
-        <Quiz />
-      </Route>
+        <Route exact path="/">
+          <div>
+            <div className="header">
+              <h1>Breaking Bad Characters Information</h1>
+            </div>
+            <Form getQuery={(query) => setQuery(query)} />
+            <div className="card-container">
+              {characters.map((character) => (
+                <CharacterCard
+                  key={character.char_id}
+                  name={character.name}
+                  nickname={character.nickname}
+                  occupation={character.occupation[0]}
+                  image={character.img}
+                />
+              ))}
+              ;
+            </div>
+          </div>
+        </Route>
+        <Route path="/quiz">
+          <Quiz />
+        </Route>
+      </Switch>
     </Router>
   );
 }
